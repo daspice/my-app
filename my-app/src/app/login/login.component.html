@@ -1,0 +1,35 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+  <div class="form-floating">
+    <input type="email" name="email" class="form-control" id="floatingInput" [(ngModel)]="user.email"
+      placeholder="name@example.com" required #email="ngModel">
+    <label for="floatingInput">Email address</label>
+  </div>
+  <div *ngIf="(email.invalid && email.touched) || email.dirty">
+    <div class="alert alert-danger" *ngIf="email.errors?.['required']">
+      Email address is required
+    </div>
+    <div class="alert alert-danger" *ngIf="email.errors?.['email']">
+      Email address is invalid
+    </div>
+  </div>
+
+  <div class="form-floating">
+    <input type="password" name="password" class="form-control" id="floatingPassword" [(ngModel)]="user.password"
+      #password="ngModel" placeholder="Password" required minlength="10" />
+    <label for="floatingPassword">Password</label>
+  </div>
+  <div *ngIf="(password.invalid && password.touched) || password.dirty">
+    <div class="alert alert-danger" *ngIf="password.errors?.['required']">
+      Password is required
+    </div>
+    <div class="alert alert-danger" *ngIf="password.errors?.['minlength']">
+      Min length is 10
+    </div>
+  </div>
+
+
+  <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!form.form.valid">Sign in</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+</form>

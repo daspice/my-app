@@ -1,0 +1,24 @@
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink=""  class="nav-link px-2 link-secondary">Home</a></li>
+      <li><a routerLink="cars" class="nav-link px-2 link-dark">Cars</a></li>
+    </ul>
+
+    <button (click)="updateLoggedIn()" type="button" class="btn btn-outline-secondary me-2">Update login data</button>
+
+    <div class="col-md-5 text-end" *ngIf="!isLoggedIn; else loggedIn" >
+      <a routerLink="login" type="button" class="btn btn-outline-primary me-2">Login</a>
+      <a routerLink="register" type="button" class="btn btn-primary">Registration</a>
+    </div>
+    <ng-template #loggedIn>
+      <p>{{username}}</p>
+      <button (click)="logout()" type="button" class="btn btn-danger">Logout</button>
+    </ng-template>
+
+  </header>
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
+</div>
