@@ -12,7 +12,7 @@ body{
     margin-bottom: 10px;
 }
 ul{
-    list-style: '- '
+    list-style: ' '
 }
 table {
     border: 1px solid red;
@@ -22,7 +22,7 @@ li > a:visited {
     color: rgb(194, 160, 160);
 }
 .custom_icon{
-    list-style: '- '
+    list-style: ' '
 }
 
 .title-with-list__list > li{

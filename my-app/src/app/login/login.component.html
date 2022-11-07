@@ -3,7 +3,7 @@
 
   <div class="form-floating">
     <input type="email" name="email" class="form-control" id="floatingInput" [(ngModel)]="user.email"
-      placeholder="name@example.com" required email #email="ngModel">
+      placeholder="name@example.com" required email #email="ngModel" maxlength="300">
     <label for="floatingInput">Email address</label>
   </div>
   <div *ngIf="(email.invalid && email.touched) || email.dirty">
@@ -13,11 +13,14 @@
     <div class="alert alert-danger" *ngIf="email.errors?.['email']">
       Email address is invalid
     </div>
+    <div class="alert alert-danger" *ngIf="email.errors?.['maxlength']">
+      Min length is 300
+    </div>
   </div>
 
   <div class="form-floating">
     <input type="password" name="password" class="form-control" id="floatingPassword" [(ngModel)]="user.password"
-      #password="ngModel" placeholder="Password" required minlength="6" maxlength="30" />
+      #password="ngModel" placeholder="Password" required minlength="10" maxlength="300" />
     <label for="floatingPassword">Password</label>
   </div>
   <div *ngIf="(password.invalid && password.touched) || password.dirty">
@@ -25,10 +28,10 @@
       Password is required
     </div>
     <div class="alert alert-danger" *ngIf="password.errors?.['minlength']">
-      Min length is 6
+      Min length is 10
     </div>
     <div class="alert alert-danger" *ngIf="password.errors?.['maxlength']">
-      Min length is 30
+      Min length is 300
     </div>
   </div>
 
