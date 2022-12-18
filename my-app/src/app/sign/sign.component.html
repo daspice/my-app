@@ -1,0 +1,61 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+    <h1 class="h3 mb-3 fw-normal">Вход</h1>
+    <div class="form-floating">
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="floatingInput"
+        [(ngModel)]="hero.email"
+        placeholder="name@example.com"
+        required
+        email
+        #email="ngModel"
+      />
+      <label for="floatingInput">Email</label>
+    </div>
+    <div *ngIf="(email.invalid && email.touched) || email.dirty">
+      <div class="alert alert-danger" *ngIf="email.errors?.['required']">
+        Email обязателен
+      </div>
+      <div class="alert alert-danger" *ngIf="email.errors?.['email']">
+        Email некорректен
+      </div>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="floatingPassword"
+        [(ngModel)]="hero.password"
+        #password="ngModel"
+        placeholder="Password"
+        required
+        minlength="10"
+      />
+      <label for="floatingPassword">Пароль</label>
+    </div>
+    <div *ngIf="(password.invalid && password.touched) || password.dirty">
+      <div class="alert alert-danger" *ngIf="password.errors?.['required']">
+        Пароль обязателен
+      </div>
+      <div class="alert alert-danger" *ngIf="password.errors?.['minlength']">
+        Пароль должен содержать не менее 10 знаков
+      </div>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Запомнить меня
+        </label>
+      </div>
+
+    <button
+      class="w-100 btn btn-lg btn"
+      type="submit"
+      [disabled]="!form.form.valid"
+    >
+      Войти
+    </button>
+  </form>

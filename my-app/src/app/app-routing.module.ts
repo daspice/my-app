@@ -1,18 +1,63 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
 import { PostsComponent } from "./posts/posts.component";
+import { HomeComponent } from "./home/home.component";
+import { PopComponent } from "./pop/pop.component";
+import { RockComponent } from "./rock/rock.component";
+import { BluzComponent } from "./bluz/bluz.component";
+import { AboutComponent } from "./about/about.component";
+import { LoginComponent } from "./login/login.component";
+import { SignComponent } from "./sign/sign.component";
+import { NewComponent } from "./new/new.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { TimeComponent } from "./time/time.component";
+import { HeroComponent } from "./new/hero/hero.component";
+
+
+
+
+
+
+
 
 const routes: Routes = [
     {
         path: 'post', component: PostsComponent
     },
     {
-        path: 'login', component: LoginComponent
+        path: 'home', component: HomeComponent
     },
     {
-        path: 'register', component: RegisterComponent
+        path: 'pop', component: PopComponent
+    },
+    {
+        path: 'rock', component: RockComponent
+    },
+    {
+        path: 'bluz', component: BluzComponent
+    },
+    {
+        path: 'about', component: AboutComponent
+    },
+    {
+        path: 'login', component: LoginComponent,
+    },
+    {
+        path: 'sign', component: SignComponent,
+    },
+    {
+        path: 'new/:name', component: NewComponent,
+        children: [
+            {
+              path: 'hero',
+              component: HeroComponent
+            }]
+    },
+    {
+        path: '**', component: NotFoundComponent
+    },
+    {
+        path: 'time', component: TimeComponent
     },
 ];
 

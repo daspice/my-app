@@ -1,23 +1,31 @@
 <div class="container">
-  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a routerLink=""  class="nav-link px-2 link-secondary">Home</a></li>
-      <li><a routerLink="post" class="nav-link px-2 link-dark">Posts</a></li>
-    </ul>
-
-    <button (click)="updateLoggedIn()" type="button" class="btn btn-outline-secondary me-2">Update login data</button>
-
-    <div class="col-md-5 text-end" *ngIf="!isLoggedIn; else loggedIn" >
-      <a routerLink="login" type="button" class="btn btn-outline-primary me-2">Login</a>
-      <a routerLink="register" type="button" class="btn btn-primary">Registration</a>
+  <nav class="py-2 bg-light border-bottom">
+    <div class="container d-flex flex-wrap">
+      <ul class="nav me-auto">
+        <li class="fs-6"><a href="home" class="nav-link link-dark px-2 active" aria-current="page">Главная</a></li>
+        <li class="fs-6"><a href="new" class="nav-link link-dark px-2">Вопросы и ответы</a></li>
+        <li class="fs-6"><a href="post" class="nav-link link-dark px-2">Жанры</a></li>
+        <li class="fs-6"><a href="time" class="nav-link link-dark px-2">Временная шкала</a></li>
+        <li class="fs-6"><a href="about" class="nav-link link-dark px-2">О сайте</a></li>
+      </ul>
+      <ul class="nav">
+        <li class="fs-6"><a href="login" class="nav-link link-dark px-2">Регестрация</a></li>
+        <li class="fs-6"><a href="sign" class="nav-link link-dark px-2">Вход</a></li>
+      </ul>
     </div>
-    <ng-template #loggedIn>
-      <p>{{username}}</p>
-      <button (click)="logout()" type="button" class="btn btn-danger">Logout</button>
-    </ng-template>
-
+  </nav>
+  <header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
+      <a href="home" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-2">High-sounding music</span>
+      </a>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+        <input type="search" class="form-control" placeholder="Поиск по сайту..." aria-label="Search">
+      </form>
+    </div>
   </header>
+
   <main class="container">
     <router-outlet></router-outlet>
   </main>

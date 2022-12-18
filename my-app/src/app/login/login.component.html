@@ -1,41 +1,164 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">Регестрация</h1>
+  
+    <div class="form-floating">
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        id="name"
+        placeholder="Name"
+        [(ngModel)]="hero.name"
+        #name="ngModel"
+        required
+      />
+      <label for="name">Имя</label>
+    </div>
+    <div *ngIf="(name.invalid && name.touched) || name.dirty">
+      <div class="alert alert-danger" *ngIf="name.errors?.['required']">
+        Имя обязательно
+      </div>
+    </div>
+  
+    <div class="form-floating">
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="email"
+        placeholder="name@example.com"
+        email
+        #email="ngModel"
+        [(ngModel)]="hero.email"
+        required
+      />
+      <label for="email">Email</label>
+    </div>
+    <div *ngIf="(email.invalid && email.touched) || email.dirty">
+      <div class="alert alert-danger" *ngIf="email.errors?.['required']">
+        Email обязателен
+      </div>
+      <div class="alert alert-danger" *ngIf="email.errors?.['email']">
+        Email некорректен
+      </div>
+    </div>
+  
+    <div class="form-floating">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+        #password="ngModel"
+        [(ngModel)]="hero.password"
+        required
+        minlength="10"
+      />
+      <label for="password">Пароль</label>
+    </div>
+    <div *ngIf="(password.invalid && password.touched) || password.dirty">
+      <div class="alert alert-danger" *ngIf="password.errors?.['required']">
+        Пароль обязателен
+      </div>
+      <div class="alert alert-danger" *ngIf="password.errors?.['minlength']">
+        Пароль должен содержать минимум 10 знаков
+      </div>
+    </div>
+  
+    <div class="form-floating">
+      <input
+        type="password"
+        name="passwordConfirm"
+        class="form-control"
+        id="passwordConfirm"
+        placeholder="Password Confirm"
+        #passwordConfirm="ngModel"
+        [(ngModel)]="hero.passwordConfirm"
+        required
+        minlength="10"
+      />
+      <label for="passwordConfirm">Подтверждение пароля</label>
+    </div>
+    <div
+      *ngIf="
+        (passwordConfirm.invalid && passwordConfirm.touched) ||
+        passwordConfirm.dirty
+      "
+    >
+      <div
+        class="alert alert-danger"
+        *ngIf="passwordConfirm.errors?.['required']"
+      >
+        Подтверждение пароля обязательно
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="passwordConfirm.errors?.['minlength']"
+      >
+        Минимальное количество знаков - 10
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="passwordConfirm.value != password.value"
+      >
+        Пароль не совпадает
+      </div>
+    </div>
+  
+    <div class="form-floating">
+      <input
+        type="date"
+        name="birthDate"
+        class="form-control"
+        id="birthDate"
+        min="1900-01-01"
+        max="2015-01-01"
+        placeholder="Birth Date"
+        #birthDate="ngModel"
+        [(ngModel)]="hero.birthDate"
+      />
+      <label for="birthDate">Дата рождение</label>
+    </div>
+    <div *ngIf="(birthDate.invalid && birthDate.touched) || birthDate.dirty">
+      <div class="alert alert-danger" *ngIf="birthDate.value < '1900-01-01'">
+        Минимальная дата рождения - 01.01.1900
+      </div>
+      <div class="alert alert-danger" *ngIf="birthDate.value > '2015-01-01'">
+        Максимальная дата рождения - 01.01.2015
+      </div>
+    </div>
+  
+    <div class="form-floating">
+      <select
+        class="form-select"
+        id="gender"
+        [(ngModel)]="hero.gender"
+        name="gender"
+      >
+        <option selected>Пол</option>
+        <option value="male">Можской</option>
+        <option value="female">Женский</option>
+        <option value="other">Другой</option>
+      </select>
+      <label for="gender">Пол</label>
+    </div>
 
-  <div class="form-floating">
-    <input type="email" name="email" class="form-control" id="floatingInput" [(ngModel)]="user.email"
-      placeholder="name@example.com" required email #email="ngModel" maxlength="300">
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div *ngIf="(email.invalid && email.touched) || email.dirty">
-    <div class="alert alert-danger" *ngIf="email.errors?.['required']">
-      Email address is required
-    </div>
-    <div class="alert alert-danger" *ngIf="email.errors?.['email']">
-      Email address is invalid
-    </div>
-    <div class="alert alert-danger" *ngIf="email.errors?.['maxlength']">
-      Min length is 300
-    </div>
-  </div>
+    <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Запомнить меня
+        </label>
+      </div>
 
-  <div class="form-floating">
-    <input type="password" name="password" class="form-control" id="floatingPassword" [(ngModel)]="user.password"
-      #password="ngModel" placeholder="Password" required minlength="10" maxlength="300" />
-    <label for="floatingPassword">Password</label>
-  </div>
-  <div *ngIf="(password.invalid && password.touched) || password.dirty">
-    <div class="alert alert-danger" *ngIf="password.errors?.['required']">
-      Password is required
-    </div>
-    <div class="alert alert-danger" *ngIf="password.errors?.['minlength']">
-      Min length is 10
-    </div>
-    <div class="alert alert-danger" *ngIf="password.errors?.['maxlength']">
-      Min length is 300
-    </div>
-  </div>
-
-
-  <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!form.form.valid">Sign in</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-</form>
+    <button
+      class="w-100 btn btn-lg btn"
+      type="submit"
+      [disabled]="!form.form.valid"
+    >
+      Зарегестрироваться
+    </button>
+    <P>
+    </P>
+    <p> </p>
+    <p> </p>
+  </form>

@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  posts: string[] = [ 'Новости', 'Развлекательное', 'Обучение', 'Продажа', 'Мотивация', 'Информация' ];
-
   constructor() { }
 
   ngOnInit(): void {

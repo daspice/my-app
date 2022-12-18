@@ -4,11 +4,12 @@
 }
 
 .ng-invalid:not(form) {
-  border-left: 5px solid rgba(184, 144, 23, 0.863); 
+  border-left: 5px solid rgba(184, 144, 23, 0.863);
 }
 form > div {
   margin-bottom: 1em;
 }
 
 button {
-    background-color:#42a948 }
+    background-color:#42a948;
+}
