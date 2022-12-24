@@ -11,7 +11,6 @@ import { SignComponent } from "./sign/sign.component";
 import { NewComponent } from "./new/new.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { TimeComponent } from "./time/time.component";
-import { HeroComponent } from "./new/hero/hero.component";
 
 
 
@@ -46,12 +45,7 @@ const routes: Routes = [
         path: 'sign', component: SignComponent,
     },
     {
-        path: 'new/:name', component: NewComponent,
-        children: [
-            {
-              path: 'hero',
-              component: HeroComponent
-            }]
+        path: 'new', component: NewComponent,
     },
     {
         path: '**', component: NotFoundComponent
